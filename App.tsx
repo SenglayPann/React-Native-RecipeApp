@@ -21,9 +21,7 @@ const App: React.FC = () => {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="RecipeList" screenOptions={{
-          headerStyle: { backgroundColor: '#ff6f91' },
-          }}
+        <Stack.Navigator initialRouteName="RecipeList"
         >
           <Stack.Screen name="RecipeList" component={RecipeList}/>
           <Stack.Screen name="RecipeDetails" component={RecipeDetials}/>
