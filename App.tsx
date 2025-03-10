@@ -7,16 +7,11 @@ import {config} from '@gluestack-ui/config';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Home from './src/screens/Home';
-import RecipeDetials from './src/screens/RecipeDetails';
+// import RecipeDetials from './src/screens/RecipeDetails';
+import {RootTabParamList} from './src/types/navigation';
+import RecipeDetails from './src/screens/RecipeDetails';
 
-type RootTabList = {
-  RecipeList: undefined;
-  RecipeDetails: {
-    recipeId: string;
-  };
-};
-
-const Tab = createBottomTabNavigator<RootTabList>();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const App: React.FC = () => {
   return (
@@ -37,11 +32,12 @@ const App: React.FC = () => {
               tabBarIcon: ({color, size}) => (
                 <Icon name="th-list" size={size} color={color} />
               ),
+              title: 'Home',
             }}
           />
           <Tab.Screen
             name="RecipeDetails"
-            component={RecipeDetials}
+            component={RecipeDetails}
             options={{
               tabBarIcon: ({color, size}) => (
                 <Icon name="info" size={size} color={color} />

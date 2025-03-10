@@ -1,7 +1,5 @@
 import React from 'react';
-import {ScrollView, FlatList} from 'react-native';
-import {Box, Text, VStack} from '@gluestack-ui/themed';
-import RecipeCard from '../components/RecipeCard';
+import {ScrollView} from 'react-native';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Listcontainer from '../components/Listcontainer';

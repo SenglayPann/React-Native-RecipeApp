@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from '@gluestack-ui/themed';
 import {ListRenderItem, FlatList} from 'react-native';
 
 import type {CategoryListProps, Category} from '../types/meal';
