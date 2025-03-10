@@ -45,7 +45,7 @@ const App: React.FC = () => {
               tabBarIcon: ({ color, size }) => (
                 <Icon name="info" size={size} color={color}/>
               )
-            }}  
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>
