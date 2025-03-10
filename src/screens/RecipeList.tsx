@@ -14,9 +14,16 @@ const categoryList: CategoryResponse = require('../assets/mock/category-list.jso
 function RecipeList(): React.ReactNode {
   return (
     <ScrollView>
+      {/* header */}
       <Header />
+      {/* SearchBar */}
       <SearchBar />
+      {/* Categoried */}
       <Listcontainer listName={'Categories'}>
+        <CategoryList categories={categoryList.categories} />
+      </Listcontainer>
+      {/* recomendation */}
+      <Listcontainer listName={'Recomendation'}>
         <CategoryList categories={categoryList.categories} />
       </Listcontainer>
     </ScrollView>

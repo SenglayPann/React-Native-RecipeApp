@@ -12,7 +12,7 @@ function Listcontainer({children, listName}: ListContainerProps) {
   return (
     <Box w={'$full'} p={safeM} pr={'$0'}>
       <HStack mb={'$3'} justifyContent={'space-between'}>
-        <Text color={'black'} fontWeight={'$bold'}>
+        <Text color={'black'} fontWeight={'$bold'} fontSize={'$lg'}>
           {listName}
         </Text>
         <Text size={'sm'} color={'green'} pr={safeM}>
