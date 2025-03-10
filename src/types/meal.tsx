@@ -19,6 +19,19 @@ export type MealItem = {
     strIngredient9:   string;
 }
 
-export type mealList = {
-    [key: string]: MealItem
+export type mealList = MealItem[];
+
+export type CategoryResponse = {
+    categories: Category[];
+}
+
+export type Category = {
+    idCategory:             string;
+    strCategory:            string;
+    strCategoryThumb:       string;
+    strCategoryDescription: string;
+}
+
+export type CategoryListProps = {
+    categories: Category[]
 }

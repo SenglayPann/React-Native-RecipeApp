@@ -1,36 +1,25 @@
 import React from 'react';
-import { ScrollView , FlatList } from 'react-native';
-import { Box, Text, VStack } from '@gluestack-ui/themed';
+import {ScrollView, FlatList} from 'react-native';
+import {Box, Text, VStack} from '@gluestack-ui/themed';
 import RecipeCard from '../components/RecipeCard';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Listcontainer from '../components/Listcontainer';
+import CategoryList from '../components/CategoryList';
 
-const data = [
+import type {CategoryResponse} from '../types/meal';
 
-  {
-    id: 1,
-    name: 'hello',
-  },
-  {
-    id: 2,
-    name: 'holla'
-  }
-];
+const categoryList: CategoryResponse = require('../assets/mock/category-list.json');
 
-function RecipeList() {
+function RecipeList(): React.ReactNode {
   return (
-    <Box>
-      <Header/>
-      <SearchBar/>
-      <Listcontainer
-        listName={'Caxtegories'}
-      >
-        <Text>
-          Test Catecgories
-        </Text>
+    <ScrollView>
+      <Header />
+      <SearchBar />
+      <Listcontainer listName={'Categories'}>
+        <CategoryList categories={categoryList.categories} />
       </Listcontainer>
-    </Box>
+    </ScrollView>
   );
 }
 

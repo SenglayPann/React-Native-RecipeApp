@@ -10,24 +10,12 @@ const safeM = '$5';
 
 function Listcontainer({children, listName}: ListContainerProps) {
   return (
-    <Box
-      w={'$full'}
-      p={safeM}
-    >
-      <HStack
-        mb={'$3'}
-        justifyContent={'space-between'}
-      >
-        <Text
-          color={'black'}
-          fontWeight={'$bold'}
-        >
+    <Box w={'$full'} p={safeM} pr={'$0'}>
+      <HStack mb={'$3'} justifyContent={'space-between'}>
+        <Text color={'black'} fontWeight={'$bold'}>
           {listName}
         </Text>
-        <Text
-          size={'sm'}
-          color={'green'}
-        >
+        <Text size={'sm'} color={'green'} pr={safeM}>
           See all
         </Text>
       </HStack>
