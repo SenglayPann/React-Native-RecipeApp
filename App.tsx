@@ -2,30 +2,51 @@ import './gesture-handler.native';
 import React from 'react';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { config } from '@gluestack-ui/config';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import RecipeList from './src/screens/RecipeList';
 import RecipeDetials from './src/screens/RecipeDetails';
 
-type RootStackList = {
+type RootTabList = {
   RecipeList: undefined,
   RecipeDetails: {
     recipeId: string
   }
 };
 
-const Stack = createNativeStackNavigator<RootStackList>();
+const Tab = createBottomTabNavigator<RootTabList>();
 
 const App: React.FC = () => {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="RecipeList"
+        <Tab.Navigator
+          initialRouteName="RecipeList"
+          screenOptions={{
+            // tabBarShowLabel: false,
+          }}
         >
-          <Stack.Screen name="RecipeList" component={RecipeList}/>
-          <Stack.Screen name="RecipeDetails" component={RecipeDetials}/>
-        </Stack.Navigator>
+          <Tab.Screen
+            name="RecipeList"
+            component={RecipeList}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Icon name="th-list" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="RecipeDetails"
+            component={RecipeDetials}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Icon name="info" size={size} color={color}/>
+              )
+            }}  
+          />
+        </Tab.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
   );
