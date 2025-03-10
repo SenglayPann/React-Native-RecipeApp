@@ -7,27 +7,29 @@ import SearchBar from '../components/SearchBar';
 import Listcontainer from '../components/Listcontainer';
 import CategoryList from '../components/CategoryList';
 
-import type {CategoryResponse} from '../types/meal';
+import type {CategoryResponse, MealListResponse} from '../types/meal';
+import RecipeList from '../components/RecipeList';
 
-const categoryList: CategoryResponse = require('../assets/mock/category-list.json');
+const categoryListRes: CategoryResponse = require('../assets/mock/category-list.json');
+const mealListRes: MealListResponse = require('../assets/mock/meal-list.json');
 
-function RecipeList(): React.ReactNode {
+function Home(): React.ReactNode {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {/* header */}
       <Header />
       {/* SearchBar */}
       <SearchBar />
       {/* Categoried */}
       <Listcontainer listName={'Categories'}>
-        <CategoryList categories={categoryList.categories} />
+        <CategoryList categories={categoryListRes.categories} />
       </Listcontainer>
       {/* recomendation */}
       <Listcontainer listName={'Recomendation'}>
-        <CategoryList categories={categoryList.categories} />
+        <RecipeList meals={mealListRes.meals} />
       </Listcontainer>
     </ScrollView>
   );
 }
 
-export default RecipeList;
+export default Home;
