@@ -4,6 +4,7 @@ import { Box, Text, VStack } from '@gluestack-ui/themed';
 import RecipeCard from '../components/RecipeCard';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
+import Listcontainer from '../components/Listcontainer';
 
 const data = [
 
@@ -22,14 +23,13 @@ function RecipeList() {
     <Box>
       <Header/>
       <SearchBar/>
-      {/* <Box p="$4">
-        <FlatList
-          data={data}
-          numColumns={2}
-          keyExtractor={(recipe) => recipe.id.toString()}
-          renderItem={({ item }) => <RecipeCard data={item}/>}
-        />
-      </Box> */}
+      <Listcontainer
+        listName={'Caxtegories'}
+      >
+        <Text>
+          Test Catecgories
+        </Text>
+      </Listcontainer>
     </Box>
   );
 }
