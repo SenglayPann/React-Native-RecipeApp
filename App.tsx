@@ -26,6 +26,7 @@ const App: React.FC = () => {
           initialRouteName="RecipeList"
           screenOptions={{
             // tabBarShowLabel: false,
+            // headerShown: false,
           }}
         >
           <Tab.Screen
