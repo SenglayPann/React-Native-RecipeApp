@@ -1,5 +1,13 @@
 import React from 'react';
-import {Avatar, AvatarFallbackText, AvatarImage, Box, Heading, HStack, Text} from '@gluestack-ui/themed';
+import {
+  Avatar,
+  AvatarFallbackText,
+  AvatarImage,
+  Box,
+  Heading,
+  HStack,
+  Text,
+} from '@gluestack-ui/themed';
 
 const safeM = '$6';
 
@@ -11,14 +19,13 @@ function Header() {
           <Text size="sm" color="#7d7d7d">
             Hello, Senglay Pann.
           </Text>
-          <Heading>
-            What would you like to cook today?
-          </Heading>
+          <Heading>What would you like to cook today?</Heading>
         </Box>
         <Avatar size="md">
           <AvatarFallbackText>Senglay Pann</AvatarFallbackText>
           <AvatarImage
             source={require('../assets/senglay-pann.jpg')}
+            alt={'User profile'}
           />
         </Avatar>
       </HStack>

@@ -41,7 +41,7 @@ const MealGallery = ({thumbUri}: Props) => {
   };
 
   return (
-    <Box id="carousel-component" width={width} position="relative">
+    <Box id="carousel-component" width={width}>
       <Box>
         <Carousel
           testID={'recipe-gallery'}
@@ -75,7 +75,7 @@ const MealGallery = ({thumbUri}: Props) => {
         />
       </Box>
 
-      <Box position="absolute" width={'$full'} bottom={0}>
+      <Box position="absolute" width={'$full'} bottom={35}>
         <Pagination.Basic<{thumbUri: string}>
           progress={progress}
           data={thumbUri}
@@ -91,7 +91,7 @@ const MealGallery = ({thumbUri}: Props) => {
       <Pressable
         position="absolute"
         left={20}
-        top={25}
+        top={50}
         borderRadius={'$full'}
         backgroundColor="white"
         p={'$3'}
@@ -106,7 +106,7 @@ const MealGallery = ({thumbUri}: Props) => {
       <Pressable
         position="absolute"
         right={20}
-        top={25}
+        top={50}
         borderRadius={'$full'}
         backgroundColor="white"
         p={'$3'}
@@ -126,7 +126,7 @@ export default MealGallery;
 const styles = StyleSheet.create({
   dotStyle: {
     borderRadius: 100,
-    backgroundColor: '#262626',
+    backgroundColor: '#acaab1',
   },
   activeDotStyle: {
     borderRadius: 100,

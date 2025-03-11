@@ -44,6 +44,8 @@ const App: React.FC = () => {
                 <Icon name="info" size={size} color={color} />
               ),
               tabBarButton: props => <RecipeDetialsButton {...props} />,
+              headerShown: false,
+              tabBarLabel: 'Recipe',
             }}
           />
         </Tab.Navigator>
