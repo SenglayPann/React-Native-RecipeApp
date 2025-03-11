@@ -19,7 +19,7 @@ export type MealItem = {
   strIngredient9: string;
 };
 
-export type MealListResponse = {
+export type MealResponse = {
   meals: MealItem[];
 };
 
