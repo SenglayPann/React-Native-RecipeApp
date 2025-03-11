@@ -5,7 +5,6 @@ import {RootTabParamList} from '../../types/navigation';
 
 const RecipeDetialsButton = (props: any) => {
   const route = useRoute<RouteProp<RootTabParamList, 'RecipeDetails'>>();
-  console.log(route);
   return <Pressable {...props} disabled={route.params?.meal ? false : true} />;
 };
 

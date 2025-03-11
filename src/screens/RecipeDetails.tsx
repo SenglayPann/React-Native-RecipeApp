@@ -10,7 +10,6 @@ const RecipeDetails = ({route, navigation}: Props) => {
   const [thumbUri, setThumbUri] = useState<string[]>([]);
 
   useEffect(() => {
-    console.log(route);
     if (route.params?.meal) {
       setThumbUri(Array(3).fill(route.params.meal.strMealThumb));
     } else {

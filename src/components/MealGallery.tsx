@@ -26,17 +26,10 @@ const MealGallery = ({thumbUri}: Props) => {
         // mode="vertical-stack"
         defaultScrollOffsetValue={scrollOffsetValue}
         style={{width: '100%'}}
-        onScrollStart={() => {
-          console.log('Scroll start');
-        }}
-        onScrollEnd={() => {
-          console.log('Scroll end');
-        }}
         onConfigurePanGesture={(g: {enabled: (arg0: boolean) => any}) => {
           'worklet';
           g.enabled(false);
         }}
-        onSnapToItem={(index: number) => console.log('current index:', index)}
         renderItem={({item}) => (
           <Image
             source={{
