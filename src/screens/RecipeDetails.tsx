@@ -1,12 +1,28 @@
-import React from 'react';
-import {Text} from 'react-native-gesture-handler';
+import React, {useEffect, useState} from 'react';
 import {RootTabParamList} from '../types/navigation';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import {Box} from '@gluestack-ui/themed';
+import MealGallery from '../components/MealGallery';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-const RecipeDetails = () => {
-  const route = useRoute<RouteProp<RootTabParamList, 'RecipeDetails'>>();
-  console.log(route.params);
-  return <Text>hello {JSON.stringify(route.params.meal)}</Text>;
+type Props = NativeStackScreenProps<RootTabParamList, 'RecipeDetails'>;
+
+const RecipeDetails = ({route, navigation}: Props) => {
+  const [thumbUri, setThumbUri] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(route);
+    if (route.params?.meal) {
+      setThumbUri(Array(3).fill(route.params.meal.strMealThumb));
+    } else {
+      navigation.goBack();
+    }
+  }, [route.params]);
+
+  return (
+    <Box>
+      <MealGallery thumbUri={thumbUri} />
+    </Box>
+  );
 };
 
 export default RecipeDetails;

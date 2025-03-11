@@ -15,7 +15,7 @@ function RecipeCard({meal}: Props) {
   const navigation = useNavigation<TabNavigationProps>();
 
   const handlePress = () => {
-    navigation.navigate('RecipeDetails', {meal: meal});
+    navigation.navigate('RecipeDetails', {meal});
   };
   return (
     <TouchableOpacity onPress={handlePress}>

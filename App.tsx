@@ -1,7 +1,11 @@
 import './gesture-handler.native';
 import React from 'react';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
-import {NavigationContainer} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  RouteProp,
+  useRoute,
+} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {config} from '@gluestack-ui/config';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,6 +14,8 @@ import Home from './src/screens/Home';
 // import RecipeDetials from './src/screens/RecipeDetails';
 import {RootTabParamList} from './src/types/navigation';
 import RecipeDetails from './src/screens/RecipeDetails';
+import {Pressable} from 'react-native';
+import RecipeDetialsButton from './src/utils/bottomBarItems/RecipeDetialsButton';
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -42,6 +48,7 @@ const App: React.FC = () => {
               tabBarIcon: ({color, size}) => (
                 <Icon name="info" size={size} color={color} />
               ),
+              tabBarButton: props => <RecipeDetialsButton {...props} />,
             }}
           />
         </Tab.Navigator>
