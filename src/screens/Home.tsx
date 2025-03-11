@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView} from '@gluestack-ui/themed';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Listcontainer from '../components/Listcontainer';
@@ -13,7 +13,7 @@ const mealListRes: MealListResponse = require('../assets/mock/meal-list.json');
 
 function Home(): React.ReactNode {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} width={'$full'}>
       {/* header */}
       <Header />
       {/* SearchBar */}

@@ -18,7 +18,7 @@ const RecipeDetails = ({route, navigation}: Props) => {
   }, [route.params]);
 
   return (
-    <Box>
+    <Box width={'$full'}>
       <MealGallery thumbUri={thumbUri} />
     </Box>
   );

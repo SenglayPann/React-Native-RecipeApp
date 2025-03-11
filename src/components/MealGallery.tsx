@@ -1,8 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
 import {useSharedValue} from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
-import {Image} from '@gluestack-ui/themed';
+import {Image, View} from '@gluestack-ui/themed';
+import {useWindowDimensions} from 'react-native';
 
 type Props = {
   thumbUri: string[];
@@ -10,22 +10,20 @@ type Props = {
 
 const MealGallery = ({thumbUri}: Props) => {
   const scrollOffsetValue = useSharedValue<number>(0);
+  const {width} = useWindowDimensions();
 
   return (
-    <View id="carousel-component">
+    <View id="carousel-component" width={width}>
       <Carousel
-        testID={'xxx'}
+        testID={'recipe-gallery'}
         loop={true}
-        width={430}
-        height={258}
+        width={width}
         snapEnabled={true}
-        pagingEnabled={true}
+        // pagingEnabled={true}
         // autoPlay={true}
         autoPlayInterval={2000}
         data={thumbUri}
-        // mode="vertical-stack"
         defaultScrollOffsetValue={scrollOffsetValue}
-        style={{width: '100%'}}
         onConfigurePanGesture={(g: {enabled: (arg0: boolean) => any}) => {
           'worklet';
           g.enabled(false);
@@ -35,6 +33,9 @@ const MealGallery = ({thumbUri}: Props) => {
             source={{
               uri: item,
             }}
+            resizeMode="contain"
+            width={width}
+            height={width}
           />
         )}
       />
