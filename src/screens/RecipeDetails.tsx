@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {RootTabParamList} from '../types/navigation';
-import {Box} from '@gluestack-ui/themed';
+import {Box, ScrollView} from '@gluestack-ui/themed';
 import MealGallery from '../components/MealGallery';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
@@ -18,9 +18,9 @@ const RecipeDetails = ({route, navigation}: Props) => {
   }, [route.params]);
 
   return (
-    <Box width={'$full'}>
+    <ScrollView width={'$full'}>
       <MealGallery thumbUri={thumbUri} />
-    </Box>
+    </ScrollView>
   );
 };
 
