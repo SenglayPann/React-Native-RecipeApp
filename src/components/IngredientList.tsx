@@ -21,7 +21,9 @@ const IngredientList = ({meal}: Props) => {
     <Box gap={'$2'}>
       {ingredientList.length ? (
         ingredientList.map(ingredient => {
-          return <IngredientCard ingredientName={ingredient} />;
+          return (
+            <IngredientCard key={ingredient} ingredientName={ingredient} />
+          );
         })
       ) : (
         <Text> There is no ingredient</Text>
