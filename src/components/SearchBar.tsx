@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Box,
   HStack,
   Input,
   InputField,
@@ -9,8 +8,10 @@ import {
   SearchIcon,
   useToken,
   Divider,
+  Pressable,
 } from '@gluestack-ui/themed';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {TouchableOpacity} from 'react-native';
 
 const safeM = '$5';
 
@@ -18,34 +19,34 @@ function SearchBar() {
   const size = useToken('fontSizes', 'lg');
 
   return (
-    <Box m={safeM}>
-      <HStack>
-        <Input
-          variant="rounded"
-          size="md"
-          width="$full"
-          height={'$12'}
-          // isReadOnly={true}
-          isFocused={false}
-          backgroundColor={'white'}
-          borderColor={'white'}>
-          <InputSlot pl={safeM}>
-            <InputIcon as={SearchIcon} />
-          </InputSlot>
-          <InputField placeholder="Search any recipe" />
-          <Divider
-            orientation={'vertical'}
-            mr={'$3'}
-            alignSelf={'center'}
-            h={'$2/3'}
-            width={'$0.5'}
-          />
-          <InputSlot pr={safeM}>
+    <HStack
+      m={safeM}
+      borderRadius={'$full'}
+      backgroundColor={'white'}
+      borderColor={'white'}>
+      <Input
+        variant="rounded"
+        size="md"
+        flex={1}
+        height={'$12'}
+        // isReadOnly={true}
+        isFocused={false}
+        backgroundColor={'white'}
+        borderColor={'white'}>
+        <InputSlot pl={safeM}>
+          <InputIcon as={SearchIcon} />
+        </InputSlot>
+        <InputField placeholder="Search any recipe" />
+      </Input>
+      <HStack alignItems={'center'}>
+        <Divider orientation={'vertical'} mr={'$3'} h={'$2/3'} width={'$0.5'} />
+        <Pressable pr={safeM} onPress={() => console.log('test')}>
+          <TouchableOpacity>
             <Icon name="filter" size={size} color={'#7d7d7d'} />
-          </InputSlot>
-        </Input>
+          </TouchableOpacity>
+        </Pressable>
       </HStack>
-    </Box>
+    </HStack>
   );
 }
 
