@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {ScrollView} from '@gluestack-ui/themed';
+import React, {useState, useEffect, Fragment} from 'react';
+import {Box, ScrollView} from '@gluestack-ui/themed';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Listcontainer from '../components/Listcontainer';
@@ -9,6 +9,7 @@ import {type CategoryResponse, type MealResponse} from '../types/meal';
 import RecipeList from '../components/RecipeList';
 import {getCategories, getMeals} from '../utils/api';
 import {LogBox} from 'react-native';
+import LoadingScreen from '../components/LoadingScreen';
 
 // const categoryListRes: CategoryResponse = require('../assets/mock/category-list.json');
 // const mealListRes: MealResponse = require('../assets/mock/meal-list.json');
@@ -22,9 +23,9 @@ function Home(): React.ReactNode {
   const [mealRespone, setMealResponse] = useState<MealResponse | null>(null);
   const [isLoadingCategories, setIsLoadingCategories] = useState<boolean>(true);
   const [isFetchCategrysError, setIsFetchCategoryError] =
-    useState<boolean>(true);
+    useState<boolean>(false);
   const [isLoadingMeals, setIsLoadingMeals] = useState<boolean>(true);
-  const [isFetchMealError, setIsFetchMealError] = useState<boolean>(true);
+  const [isFetchMealError, setIsFetchMealError] = useState<boolean>(false);
 
   const fetchCategories = async () => {
     try {
@@ -72,15 +73,22 @@ function Home(): React.ReactNode {
       {/* SearchBar */}
       <SearchBar />
       {/* Categoried */}
-      <Listcontainer listName={'Categories'}>
-        {categoryResponse && (
-          <CategoryList categories={categoryResponse.categories} />
-        )}
-      </Listcontainer>
-      {/* recomendation */}
-      <Listcontainer listName={'Recomendation'}>
-        {mealRespone && <RecipeList meals={mealRespone?.meals} />}
-      </Listcontainer>
+      {isLoadingCategories && isLoadingMeals ? (
+        <Box height={'$full'} justifyContent="center">
+          <LoadingScreen />
+        </Box>
+      ) : (
+        <Fragment>
+          <Listcontainer listName={'Categories'}>
+            {categoryResponse && (
+              <CategoryList categories={categoryResponse.categories} />
+            )}
+          </Listcontainer>
+          <Listcontainer listName={'Recomendation'}>
+            {mealRespone && <RecipeList meals={mealRespone?.meals} />}
+          </Listcontainer>
+        </Fragment>
+      )}
     </ScrollView>
   );
 }
