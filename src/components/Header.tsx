@@ -8,6 +8,7 @@ import {
   HStack,
   Text,
 } from '@gluestack-ui/themed';
+import {TouchableOpacity} from 'react-native';
 
 const safeM = '$6';
 
@@ -21,13 +22,15 @@ function Header() {
           </Text>
           <Heading>What would you like to cook today?</Heading>
         </Box>
-        <Avatar size="md">
-          <AvatarFallbackText>Senglay Pann</AvatarFallbackText>
-          <AvatarImage
-            source={require('../assets/senglay-pann.jpg')}
-            alt={'User profile'}
-          />
-        </Avatar>
+        <TouchableOpacity>
+          <Avatar size="md">
+            <AvatarFallbackText>Senglay Pann</AvatarFallbackText>
+            <AvatarImage
+              source={require('../assets/senglay-pann.jpg')}
+              alt={'User profile'}
+            />
+          </Avatar>
+        </TouchableOpacity>
       </HStack>
     </Box>
   );
