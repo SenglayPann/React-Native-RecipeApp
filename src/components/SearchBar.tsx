@@ -25,13 +25,12 @@ function SearchBar() {
           size="md"
           width="$full"
           height={'$12'}
-          isReadOnly={true}
+          // isReadOnly={true}
           isFocused={false}
           backgroundColor={'white'}
-          borderColor={'white'}
-        >
+          borderColor={'white'}>
           <InputSlot pl={safeM}>
-            <InputIcon as={SearchIcon}/>
+            <InputIcon as={SearchIcon} />
           </InputSlot>
           <InputField placeholder="Search any recipe" />
           <Divider
@@ -42,11 +41,7 @@ function SearchBar() {
             width={'$0.5'}
           />
           <InputSlot pr={safeM}>
-            <Icon
-              name="filter"
-              size={size}
-              color={'#7d7d7d'}
-            />
+            <Icon name="filter" size={size} color={'#7d7d7d'} />
           </InputSlot>
         </Input>
       </HStack>

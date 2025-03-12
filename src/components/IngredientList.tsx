@@ -3,7 +3,7 @@ import {ArrayIngredients, ArrayOfGrouObjectLike} from '../utils/objectUtil';
 import {MealItem} from '../types/meal';
 import {Box} from '@gluestack-ui/themed';
 import IngredientCard from './IngredientCard';
-import {Text} from 'react-native-gesture-handler';
+import Message from './Message';
 
 type Props = {
   meal: MealItem | null;
@@ -20,13 +20,11 @@ const IngredientList = ({meal}: Props) => {
   return (
     <Box gap={'$2'}>
       {ingredientList.length ? (
-        ingredientList.map(ingredient => {
-          return (
-            <IngredientCard key={ingredient} ingredientName={ingredient} />
-          );
+        ingredientList.map((ingredient, index) => {
+          return <IngredientCard key={index} ingredientName={ingredient} />;
         })
       ) : (
-        <Text> There is no ingredient</Text>
+        <Message message="There is no ingredient" />
       )}
     </Box>
   );

@@ -4,11 +4,8 @@ import Carousel, {
   ICarouselInstance,
   Pagination,
 } from 'react-native-reanimated-carousel';
-import {Image, Pressable, useToken, Box} from '@gluestack-ui/themed';
+import {Image, Box} from '@gluestack-ui/themed';
 import {StyleSheet, useWindowDimensions} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {useNavigation} from '@react-navigation/native';
-import {TabNavigationProps} from '../types/navigation';
 
 type Props = {
   thumbUri: string[];
@@ -17,10 +14,7 @@ type Props = {
 const MealGallery = ({thumbUri}: Props) => {
   const scrollOffsetValue = useSharedValue<number>(0);
   const {width} = useWindowDimensions();
-  const color = useToken('colors', 'blueGray600');
-  const size = useToken('fontSizes', 'lg');
 
-  const navigation = useNavigation<TabNavigationProps>();
   const progress = useSharedValue<number>(0);
   const ref = React.useRef<ICarouselInstance>(null);
 
@@ -36,10 +30,6 @@ const MealGallery = ({thumbUri}: Props) => {
     });
   };
 
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
-
   return (
     <Box id="carousel-component" width={width}>
       <Box>
@@ -48,8 +38,6 @@ const MealGallery = ({thumbUri}: Props) => {
           loop={true}
           width={width}
           height={width}
-          // snapEnabled={true}
-          // pagingEnabled={true}
           autoPlay={true}
           autoPlayInterval={3000}
           data={thumbUri}
@@ -88,36 +76,6 @@ const MealGallery = ({thumbUri}: Props) => {
           onPress={onPressPagination}
         />
       </Box>
-
-      <Pressable
-        position="absolute"
-        left={20}
-        top={50}
-        borderRadius={'$full'}
-        backgroundColor="white"
-        p={'$3'}
-        onPress={handleGoBack}
-        width={'$12'}
-        height={'$12'}
-        alignItems="center"
-        justifyContent="center">
-        <Icon name="long-arrow-left" color={color} size={size} />
-      </Pressable>
-
-      <Pressable
-        position="absolute"
-        right={20}
-        top={50}
-        borderRadius={'$full'}
-        backgroundColor="white"
-        p={'$3'}
-        onPress={handleGoBack}
-        width={'$12'}
-        height={'$12'}
-        alignItems="center"
-        justifyContent="center">
-        <Icon name="bookmark" color={color} size={size} />
-      </Pressable>
     </Box>
   );
 };

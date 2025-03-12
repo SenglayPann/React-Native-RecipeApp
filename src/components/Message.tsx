@@ -7,8 +7,10 @@ type Props = {
 
 const Message = ({message}: Props) => {
   return (
-    <View flex={1} justifyContent="center" p={'$3'}>
-      <Text>{message}</Text>
+    <View flex={1} p={'$3'}>
+      <Text textAlign="center" fontSize={'$sm'}>
+        {message}
+      </Text>
     </View>
   );
 };

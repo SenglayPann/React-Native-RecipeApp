@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {RootTabParamList} from '../types/navigation';
-import {ScrollView} from '@gluestack-ui/themed';
+import {ScrollView, Box} from '@gluestack-ui/themed';
 import MealGallery from '../components/MealGallery';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import DetialsBoard from '../components/DetialsBoard';
 import {MealItem} from '../types/meal';
+import FixedPosButton from '../components/FixedPosButton';
 
 type Props = NativeStackScreenProps<RootTabParamList, 'RecipeDetails'>;
 
@@ -20,10 +21,16 @@ const RecipeDetails = ({route}: Props) => {
   }, [route.params]);
 
   return (
-    <ScrollView width={'$full'}>
+    <Box width={'$full'}>
+      <ScrollView>
+        <MealGallery thumbUri={thumbUri} />
+        <DetialsBoard meal={meal} />
+      </ScrollView>
+      <FixedPosButton iconName="long-arrow-left" left={20} />
+      <FixedPosButton iconName="bookmark" right={20} />
       <MealGallery thumbUri={thumbUri} />
       <DetialsBoard meal={meal} />
-    </ScrollView>
+    </Box>
   );
 };
 
