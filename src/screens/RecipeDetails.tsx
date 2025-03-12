@@ -22,14 +22,12 @@ const RecipeDetails = ({route}: Props) => {
 
   return (
     <Box width={'$full'}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <MealGallery thumbUri={thumbUri} />
         <DetialsBoard meal={meal} />
       </ScrollView>
       <FixedPosButton iconName="long-arrow-left" left={20} />
       <FixedPosButton iconName="bookmark" right={20} />
-      <MealGallery thumbUri={thumbUri} />
-      <DetialsBoard meal={meal} />
     </Box>
   );
 };

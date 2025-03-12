@@ -14,12 +14,11 @@ const Routes = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={
-        {
-          // tabBarShowLabel: false,
-          // headerShown: false,
-        }
-      }>
+      screenOptions={{
+        // tabBarShowLabel: false,
+        // headerShown: false,
+        animation: 'shift',
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}

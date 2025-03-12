@@ -1,7 +1,5 @@
-import {Center, SafeAreaView} from '@gluestack-ui/themed';
 import React from 'react';
 import {ActivityIndicator, StyleSheet} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const LoadingScreen = () => {
   return (

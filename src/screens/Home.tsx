@@ -40,16 +40,28 @@ function Home(): React.ReactNode {
       ) : (
         <Fragment>
           <Listcontainer listName={'Categories'}>
-            {homeStates.categoryResponse && (
-              <CategoryList
-                categories={homeStates.categoryResponse.categories}
-              />
+            {homeStates.categoryResponse &&
+              (homeStates.categoryResponse.categories.length ? (
+                <CategoryList
+                  categories={homeStates.categoryResponse.categories}
+                />
+              ) : (
+                <Message message="Categories is empty" />
+              ))}
+            {homeStates.isFetchCategryError && (
+              <Message message={homeStates.errMessages.category} />
             )}
-            {homeStates.isFetchCategryError && <Message message="" />}
           </Listcontainer>
+
           <Listcontainer listName={'Recomendation'}>
-            {homeStates.mealRespone && (
-              <RecipeList meals={homeStates.mealRespone?.meals} />
+            {homeStates.mealRespone &&
+              (homeStates.mealRespone.meals.length ? (
+                <RecipeList meals={homeStates.mealRespone.meals} />
+              ) : (
+                <Message message="Meals is empty" />
+              ))}
+            {homeStates.isFetchCategryError && (
+              <Message message={homeStates.errMessages.meal} />
             )}
           </Listcontainer>
         </Fragment>

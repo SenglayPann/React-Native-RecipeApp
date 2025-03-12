@@ -1,4 +1,4 @@
-import {Box, Image, Text} from '@gluestack-ui/themed';
+import {Card, Image, Text} from '@gluestack-ui/themed';
 import React from 'react';
 import {Category} from '../types/meal';
 
@@ -8,7 +8,7 @@ type Props = {
 
 const CategoryCard: React.FC<Props> = ({category}): React.ReactNode => {
   return (
-    <Box
+    <Card
       mx={'$1.5'}
       backgroundColor="white"
       px={'$2'}
@@ -33,7 +33,7 @@ const CategoryCard: React.FC<Props> = ({category}): React.ReactNode => {
         width={50}>
         {category.strCategory}
       </Text>
-    </Box>
+    </Card>
   );
 };
 
