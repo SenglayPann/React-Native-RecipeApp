@@ -70,6 +70,7 @@ const MealGallery = ({thumbUri}: Props) => {
               resizeMode="contain"
               width={width}
               height={width}
+              alt="Meal Image"
             />
           )}
         />

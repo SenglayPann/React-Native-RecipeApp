@@ -8,11 +8,15 @@ import CategoryList from '../components/CategoryList';
 import {type CategoryResponse, type MealResponse} from '../types/meal';
 import RecipeList from '../components/RecipeList';
 import {getCategories, getMeals} from '../utils/api';
+import {LogBox} from 'react-native';
 
 // const categoryListRes: CategoryResponse = require('../assets/mock/category-list.json');
 // const mealListRes: MealResponse = require('../assets/mock/meal-list.json');
 
 function Home(): React.ReactNode {
+  LogBox.ignoreLogs([
+    'Warning: Invalid prop `fill` supplied to `React.Fragment`',
+  ]);
   const [categoryResponse, setCategoryResponse] =
     useState<CategoryResponse | null>(null);
   const [mealRespone, setMealResponse] = useState<MealResponse | null>(null);
@@ -29,7 +33,7 @@ function Home(): React.ReactNode {
       );
       if (categoryRes) {
         setCategoryResponse(categoryRes);
-        console.log(categoryRes);
+        // console.log(categoryRes);
       }
     } catch (e) {
       setIsFetchCategoryError(true);
@@ -46,10 +50,11 @@ function Home(): React.ReactNode {
       );
       if (mealRes) {
         setMealResponse(mealRes);
-        console.log(mealRes);
+        // console.log(mealRes);
       }
     } catch (e) {
       setIsFetchMealError(true);
+      console.log(e);
     } finally {
       setIsLoadingMeals(false);
     }

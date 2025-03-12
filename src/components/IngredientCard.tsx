@@ -15,6 +15,7 @@ const IngredientCard = ({ingredientName}: Props) => {
             width={50}
             height={50}
             borderRadius={6}
+            alt={'sugar'}
           />
           <Text ml={'$2'} fontSize={'$xs'} color="$coolGray800">
             {ingredientName}

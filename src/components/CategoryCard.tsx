@@ -22,6 +22,7 @@ const CategoryCard: React.FC<Props> = ({category}): React.ReactNode => {
         height={40}
         resizeMode="contain"
         alignSelf="center"
+        alt={category.strCategory}
       />
       <Text
         textAlign={'center'}

@@ -51,7 +51,7 @@ const DetialsBoard = ({meal}: Props) => {
       <HStack mt={'$4'} gap={'$4'}>
         <InforIcon iconName="clock-o" content="10 mins" />
         <InforIcon iconName="bar-chart-o" content="Medium" />
-        <InforIcon iconName="fire-o" content="512 Cal" />
+        <InforIcon iconName="fire" content="512 Cal" />
       </HStack>
 
       <VStack mt={'$6'}>

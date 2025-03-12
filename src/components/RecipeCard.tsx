@@ -27,6 +27,7 @@ function RecipeCard({meal}: Props) {
           width={150}
           height={200}
           borderRadius={20}
+          alt={meal.strMeal}
         />
         <Box mx={safeM} my={'$3'} gap={'$1'}>
           <Text fontSize={'$md'} fontWeight={'$semibold'} color="black">
