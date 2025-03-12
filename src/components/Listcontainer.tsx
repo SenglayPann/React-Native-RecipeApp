@@ -1,5 +1,6 @@
 import React from 'react';
 import {Box, Text, HStack} from '@gluestack-ui/themed';
+import {TouchableOpacity} from 'react-native';
 
 type ListContainerProps = {
   children: React.ReactNode;
@@ -15,9 +16,11 @@ function Listcontainer({children, listName}: ListContainerProps) {
         <Text color={'black'} fontWeight={'$bold'} fontSize={'$lg'}>
           {listName}
         </Text>
-        <Text size={'sm'} color={'green'} pr={safeM}>
-          See all
-        </Text>
+        <TouchableOpacity activeOpacity={0.6}>
+          <Text size={'sm'} color={'green'} pr={safeM}>
+            See all
+          </Text>
+        </TouchableOpacity>
       </HStack>
       {children}
     </Box>
