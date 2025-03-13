@@ -10,6 +10,7 @@ type Props = {
 };
 
 const safeM = '$4';
+const cardWidth = 150;
 
 function RecipeCard({meal}: Props) {
   const navigation = useNavigation<TabNavigationProps>();
@@ -19,21 +20,27 @@ function RecipeCard({meal}: Props) {
   };
   return (
     <TouchableOpacity onPress={handlePress}>
-      <Card mx={'$1.5'} p={0} borderRadius={20}>
+      <Card mx={'$1.5'} p={0} borderRadius={20} width={cardWidth}>
         <Image
           source={{
             uri: meal.strMealThumb,
           }}
-          width={150}
+          width={cardWidth}
           height={200}
           borderRadius={20}
           alt={meal.strMeal}
         />
         <Box mx={safeM} my={'$3'} gap={'$1'}>
-          <Text fontSize={'$md'} fontWeight={'$semibold'} color="black">
+          <Text
+            fontSize={'$md'}
+            fontWeight={'$semibold'}
+            color="black"
+            numberOfLines={1}>
             {meal.strMeal}
           </Text>
-          <Text fontSize={'$sm'}>Origin: {meal.strArea}</Text>
+          <Text fontSize={'$sm'} numberOfLines={1}>
+            Origin: {meal.strArea}
+          </Text>
         </Box>
       </Card>
     </TouchableOpacity>
