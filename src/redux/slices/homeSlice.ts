@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HomeScreenState} from "../types/homescreen";
-import { CategoryResponse, MealResponse } from "../types/meal";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { HomeScreenState} from '../../types/homescreen';
+import { CategoryResponse, MealResponse } from '../../types/meal';
 
 const initialState: HomeScreenState = {
   categoryResponse: null,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { CategoryResponse, MealResponse } from '../types/meal';
 import { setCategoryResponse, setIsFetchCategoryError, setIsFetchMealError, setMealResponse } from '../slices/homeSlice';
-import { AppDispatch } from '../stores/store';
+import { AppDispatch } from '../redux/stores/store';
 
 
 export const getMeals = async (url: string): Promise<MealResponse> => {

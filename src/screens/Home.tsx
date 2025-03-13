@@ -11,7 +11,7 @@ import {LogBox} from 'react-native';
 import LoadingScreen from '../components/LoadingScreen';
 import Message from '../components/Message';
 
-import type {RootState, AppDispatch} from '../stores/store';
+import type {RootState, AppDispatch} from '../redux/stores/store';
 import {useSelector, useDispatch} from 'react-redux';
 
 LogBox.ignoreLogs([
@@ -33,7 +33,7 @@ function Home(): React.ReactNode {
       {/* SearchBar */}
       <SearchBar />
       {/* Categoried */}
-      {homeStates.isLoadingCategories && homeStates.isLoadingMeals ? (
+      {homeStates.isLoadingCategories || homeStates.isLoadingMeals ? (
         <Box height={'$full'} justifyContent="center">
           <LoadingScreen />
         </Box>

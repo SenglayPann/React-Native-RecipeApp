@@ -3,7 +3,7 @@ import React from 'react';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {NavigationContainer} from '@react-navigation/native';
 import {config} from '@gluestack-ui/config';
-import store from './src/stores/store';
+import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
 import Routes from './src/routes';
 
