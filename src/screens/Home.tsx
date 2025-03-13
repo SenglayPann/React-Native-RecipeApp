@@ -20,18 +20,20 @@ LogBox.ignoreLogs([
 ]);
 function Home(): React.ReactNode {
   const homeStates = useSelector((state: RootState) => state.home);
+  const mealCategoryStates = useSelector(
+    (state: RootState) => state.mealCategory,
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     fetchCategories(dispatch);
-    fetchMeals(dispatch);
-
-    if (homeStates.categoryResponse?.categories.length) {
-      dispatch(
-        setCategoryName(homeStates.categoryResponse.categories[0].strCategory),
-      );
-    }
   }, []);
+
+  useEffect(() => {
+    if (mealCategoryStates.categoryName) {
+      fetchMeals(dispatch, mealCategoryStates.categoryName);
+    }
+  }, [mealCategoryStates.categoryName]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} width={'$full'}>
@@ -62,7 +64,7 @@ function Home(): React.ReactNode {
 
           <Listcontainer listName={'Recomendation'}>
             {homeStates.mealRespone &&
-              (homeStates.mealRespone.meals.length ? (
+              (homeStates.mealRespone?.meals?.length ? (
                 <RecipeList meals={homeStates.mealRespone.meals} />
               ) : (
                 <Message message="Meals is empty" />

@@ -31,6 +31,7 @@ export const homeSlice = createSlice({
       state.isFetchCategryError = true;
       state.errMessages.category = action.payload;
       state.isLoadingCategories = false;
+      state.isLoadingMeals = false;
     },
     setIsFetchMealError: (state, action: PayloadAction<string>) => {
       state.isFetchCategryError = true;

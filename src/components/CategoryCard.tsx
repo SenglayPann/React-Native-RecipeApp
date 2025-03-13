@@ -2,8 +2,9 @@ import {Card, Image, Text} from '@gluestack-ui/themed';
 import React from 'react';
 import {Category} from '../types/meal';
 import {TouchableOpacity} from 'react-native';
-import {useSelector} from 'react-redux';
-import {RootState} from '../redux/stores/store';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppDispatch, RootState} from '../redux/stores/store';
+import {setCategoryName} from '../redux/slices/categoryslice';
 
 type Props = {
   category: Category;
@@ -13,9 +14,14 @@ const CategoryCard: React.FC<Props> = ({category}): React.ReactNode => {
   const mealCategoryStates = useSelector(
     (state: RootState) => state.mealCategory,
   );
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleChangeCategoryName = () => {
+    dispatch(setCategoryName(category.strCategory));
+  };
 
   return (
-    <TouchableOpacity activeOpacity={0.6}>
+    <TouchableOpacity activeOpacity={0.6} onPress={handleChangeCategoryName}>
       <Card
         mx={'$1.5'}
         backgroundColor={
