@@ -13,6 +13,7 @@ import Message from '../components/Message';
 
 import type {RootState, AppDispatch} from '../redux/stores/store';
 import {useSelector, useDispatch} from 'react-redux';
+import {setCategoryName} from '../redux/slices/categoryslice';
 
 LogBox.ignoreLogs([
   'Warning: Invalid prop `fill` supplied to `React.Fragment`',
@@ -24,6 +25,12 @@ function Home(): React.ReactNode {
   useEffect(() => {
     fetchCategories(dispatch);
     fetchMeals(dispatch);
+
+    if (homeStates.categoryResponse?.categories.length) {
+      dispatch(
+        setCategoryName(homeStates.categoryResponse.categories[0].strCategory),
+      );
+    }
   }, []);
 
   return (
