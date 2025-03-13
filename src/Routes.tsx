@@ -3,7 +3,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Home from './screens/Home';
-// import RecipeDetials from './screens/RecipeDetails';
 import {RootTabParamList} from './types/navigation';
 import RecipeDetails from './screens/RecipeDetails';
 import RecipeDetialsButton from './utils/bottomBarItems/RecipeDetialsButton';
@@ -15,8 +14,6 @@ const Routes = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        // tabBarShowLabel: false,
-        // headerShown: false,
         animation: 'shift',
       }}>
       <Tab.Screen
