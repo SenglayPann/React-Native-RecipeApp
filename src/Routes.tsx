@@ -36,6 +36,7 @@ const Routes = () => {
           tabBarButton: props => <RecipeDetialsButton {...props} />,
           headerShown: false,
           tabBarLabel: 'Recipe',
+          tabBarItemStyle: {display: 'none'},
         }}
       />
     </Tab.Navigator>

@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {config} from '@gluestack-ui/config';
 import store from './src/redux/stores/store';
 import {Provider} from 'react-redux';
-import Routes from './src/routes';
+import Routes from './src/Routes';
 
 // import RecipeDetials from './src/screens/RecipeDetails';
 
