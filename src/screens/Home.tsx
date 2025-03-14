@@ -16,6 +16,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 LogBox.ignoreLogs([
   'Warning: Invalid prop `fill` supplied to `React.Fragment`',
+  'Error fetching meals: CanceledError: canceled',
 ]);
 function Home(): React.ReactNode {
   const homeStates = useSelector((state: RootState) => state.home);

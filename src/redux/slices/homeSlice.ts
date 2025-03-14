@@ -5,7 +5,6 @@ import { CategoryResponse, MealResponse } from '../../types/meal';
 const initialState: HomeScreenState = {
   categoryResponse: null,
   mealRespone:null,
-  // categoryMealCache: {},
   isLoadingCategories: true,
   isLoadingMeals: true,
   isFetchCategryError: false,
@@ -27,6 +26,8 @@ export const homeSlice = createSlice({
     setMealResponse: (state, action: PayloadAction<MealResponse>) => {
       state.mealRespone = action.payload;
       state.isLoadingMeals = false;
+      state.isFetchMealError = false;
+      state.errMessages.meal = '';
     },
     setIsFetchCategoryError: (state, action: PayloadAction<string>) => {
       state.isFetchCategryError = true;

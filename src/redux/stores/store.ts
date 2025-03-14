@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import homeReducers from '../slices/homeSlice';
-// import mealCategoryReducers from '../slices/categoryslice';
 
 const store = configureStore({
   reducer:{
     home: homeReducers,
-    // mealCategory: mealCategoryReducers,
   },
 });
 

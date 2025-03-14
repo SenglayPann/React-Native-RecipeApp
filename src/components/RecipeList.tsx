@@ -1,4 +1,4 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 import {MealItem, MealListProps} from '../types/meal';
 import RecipeCard from './RecipeCard';
@@ -17,13 +17,19 @@ function RecipeList({meals}: MealListProps) {
   const visiblitiyConfig = useRef({
     viewAreaCoveragePercentThreshold: 1,
   }).current;
+  const flatListRef = useRef<FlatList | null>(null);
+
+  useEffect(() => {
+    if (flatListRef.current) {
+      flatListRef.current.scrollToOffset({animated: false, offset: 0});
+    }
+  }, [meals]);
 
   const handleOnViewItemsChanged = ({viewableItems}: viewableItemProps) => {
     const newVisibleItems: vsisibleItemList = {};
 
     viewableItems.forEach(item => {
       newVisibleItems[item.item.idMeal] = true;
-      // console.log('<---', item, '--->');
     });
     setVisibleItems(prev => ({
       ...prev,
@@ -37,6 +43,9 @@ function RecipeList({meals}: MealListProps) {
 
   return (
     <FlatList
+      ref={flatListRef}
+      initialNumToRender={3}
+      maxToRenderPerBatch={3}
       horizontal
       showsHorizontalScrollIndicator={false}
       data={meals}
