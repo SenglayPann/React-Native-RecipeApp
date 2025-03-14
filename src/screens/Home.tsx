@@ -6,7 +6,7 @@ import Listcontainer from '../components/Listcontainer';
 import CategoryList from '../components/CategoryList';
 
 import RecipeList from '../components/RecipeList';
-import {fetchCategories, fetchMeals} from '../utils/api';
+import {fetchCategories} from '../utils/api';
 import {LogBox} from 'react-native';
 import LoadingScreen from '../components/LoadingScreen';
 import Message from '../components/Message';
@@ -19,20 +19,11 @@ LogBox.ignoreLogs([
 ]);
 function Home(): React.ReactNode {
   const homeStates = useSelector((state: RootState) => state.home);
-  const mealCategoryStates = useSelector(
-    (state: RootState) => state.mealCategory,
-  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     fetchCategories(dispatch);
   }, []);
-
-  useEffect(() => {
-    if (mealCategoryStates.categoryName) {
-      fetchMeals(dispatch, mealCategoryStates.categoryName);
-    }
-  }, [mealCategoryStates.categoryName]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} width={'$full'}>
@@ -41,7 +32,7 @@ function Home(): React.ReactNode {
       {/* SearchBar */}
       <SearchBar />
       {/* Categoried */}
-      {homeStates.isLoadingCategories || homeStates.isLoadingMeals ? (
+      {homeStates.isLoadingCategories ? (
         <Box height={'$full'} justifyContent="center">
           <LoadingScreen />
         </Box>

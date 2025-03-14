@@ -24,6 +24,7 @@ function RecipeCard({meal, isVisibled}: Props) {
   useEffect(() => {
     RNI.prefetch(meal.strMealThumb);
   }, [isVisibled]);
+
   return (
     <TouchableOpacity onPress={handlePress}>
       <Card mx={'$1.5'} p={0} borderRadius={20} width={cardWidth}>

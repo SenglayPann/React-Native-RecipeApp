@@ -5,6 +5,7 @@ import { CategoryResponse, MealResponse } from '../../types/meal';
 const initialState: HomeScreenState = {
   categoryResponse: null,
   mealRespone:null,
+  // categoryMealCache: {},
   isLoadingCategories: true,
   isLoadingMeals: true,
   isFetchCategryError: false,

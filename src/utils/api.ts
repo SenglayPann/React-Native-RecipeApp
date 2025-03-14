@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CategoryResponse, MealResponse } from '../types/meal';
 import { setCategoryResponse, setIsFetchCategoryError, setIsFetchMealError, setMealResponse } from '../redux/slices/homeSlice';
 import { AppDispatch } from '../redux/stores/store';
-import { setCategoryName } from '../redux/slices/categoryslice';
+// import { setCategoryName } from '../redux/slices/categoryslice';
 
 
 export const getMeals = async (url: string): Promise<MealResponse> => {
@@ -34,9 +34,11 @@ export const fetchCategories = async (dispatch: AppDispatch) => {
     if (categoryRes) {
       dispatch(setCategoryResponse(categoryRes));
       // console.log(categoryRes);
-      dispatch(
-        setCategoryName(categoryRes.categories[0].strCategory),
-      );
+      // dispatch(
+      //   setCategoryName(categoryRes.categories[0].strCategory),
+      // );
+
+      // fetchMeals(dispatch, categoryRes.categories[0].strCategory);
     }
   } catch (e) {
     dispatch(setIsFetchCategoryError('failed fetching categories.'));

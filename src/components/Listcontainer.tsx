@@ -11,7 +11,7 @@ const safeM = '$5';
 
 function Listcontainer({children, listName}: ListContainerProps) {
   return (
-    <Box w={'$full'} p={safeM} pr={'$0'}>
+    <Box w={'$full'} p={safeM} pr={'$0'} py={0}>
       <HStack mb={'$4'} justifyContent={'space-between'}>
         <Text color={'black'} fontWeight={'$bold'} fontSize={'$lg'}>
           {listName}
