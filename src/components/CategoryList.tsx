@@ -1,7 +1,7 @@
-import React, {useEffect, useState, useRef, MutableRefObject} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {ListRenderItem, FlatList, StyleSheet} from 'react-native';
 
-import type {CategoryListProps, Category} from '../types/meal';
+import type {Category, CategoryListProps} from '../types/meal';
 import CategoryCard from './CategoryCard';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../redux/stores/store';
@@ -15,21 +15,17 @@ function CategoryList({categories}: CategoryListProps): React.ReactNode {
   const dispatch = useDispatch<AppDispatch>();
   const controllerRef = useRef<AbortController | null>(null);
 
-  const handleFetchMeals = (
-    dispatch: AppDispatch,
-    mealCategory: string,
-    controllerRef: MutableRefObject<AbortController | null>,
-  ) => {
-    fetchMeals(dispatch, mealCategory, controllerRef);
+  const handleFetchMeals = () => {
+    fetchMeals(dispatch, currentCategoryName, controllerRef);
   };
 
-  const debounceHandler = debounce(handleFetchMeals, 500);
+  const debounceHandler = debounce(handleFetchMeals, 400);
   useEffect(() => {
     fetchMeals(dispatch, currentCategoryName, controllerRef);
   }, []);
 
   useEffect(() => {
-    debounceHandler(dispatch, currentCategoryName, controllerRef);
+    debounceHandler();
   }, [currentCategoryName]);
 
   const renderItem: ListRenderItem<Category> = ({item}) => {

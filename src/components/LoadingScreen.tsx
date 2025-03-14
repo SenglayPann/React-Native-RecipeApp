@@ -1,26 +1,8 @@
 import React from 'react';
-import {ActivityIndicator, StyleSheet} from 'react-native';
+import {ActivityIndicator} from 'react-native';
 
-const LoadingScreen = () => {
-  return (
-    // <SafeAreaProvider>
-    //   <SafeAreaView style={[styles.container, styles.horizontal]}>
-    <ActivityIndicator size="large" />
-    //   </SafeAreaView>
-    // </SafeAreaProvider>
-  );
+const LoadingScreen = (Props: any) => {
+  return <ActivityIndicator size="large" {...Props} />;
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  horizontal: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
-  },
-});
 
 export default LoadingScreen;

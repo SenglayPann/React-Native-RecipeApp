@@ -56,7 +56,10 @@ function Home(): React.ReactNode {
           <Listcontainer listName={'Recomendation'}>
             {homeStates.mealRespone &&
               (homeStates.mealRespone?.meals?.length ? (
-                <RecipeList meals={homeStates.mealRespone.meals} />
+                <RecipeList
+                  meals={homeStates.mealRespone.meals}
+                  isChangingMeals={homeStates.isLoadingMeals}
+                />
               ) : (
                 <Message message="Meals is empty" />
               ))}

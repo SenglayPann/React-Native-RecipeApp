@@ -1,8 +1,9 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect, Fragment} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
-import {MealItem, MealListProps} from '../types/meal';
+import {MealItem} from '../types/meal';
 import RecipeCard from './RecipeCard';
 import {StyleSheet} from 'react-native';
+import LoadingScreen from './LoadingScreen';
 
 type vsisibleItemList = {
   [key: string]: boolean;
@@ -12,7 +13,12 @@ type viewableItemProps = {
   viewableItems: any[];
 };
 
-function RecipeList({meals}: MealListProps) {
+type Props = {
+  meals: MealItem[];
+  isChangingMeals: boolean;
+};
+
+function RecipeList({meals, isChangingMeals}: Props) {
   const [visibleItems, setVisibleItems] = useState<vsisibleItemList>({});
   const visiblitiyConfig = useRef({
     viewAreaCoveragePercentThreshold: 1,
@@ -42,19 +48,25 @@ function RecipeList({meals}: MealListProps) {
   };
 
   return (
-    <FlatList
-      ref={flatListRef}
-      initialNumToRender={3}
-      maxToRenderPerBatch={3}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      data={meals}
-      renderItem={renderItem}
-      keyExtractor={item => item.idMeal}
-      onViewableItemsChanged={handleOnViewItemsChanged}
-      viewabilityConfig={visiblitiyConfig}
-      style={styles.listContainerPadding}
-    />
+    <Fragment>
+      {isChangingMeals ? (
+        <LoadingScreen style={styles.LoadinScreen} />
+      ) : (
+        <FlatList
+          ref={flatListRef}
+          initialNumToRender={3}
+          maxToRenderPerBatch={3}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={meals}
+          renderItem={renderItem}
+          keyExtractor={item => item.idMeal}
+          onViewableItemsChanged={handleOnViewItemsChanged}
+          viewabilityConfig={visiblitiyConfig}
+          style={styles.listContainerPadding}
+        />
+      )}
+    </Fragment>
   );
 }
 
@@ -64,5 +76,9 @@ const styles = StyleSheet.create({
   listContainerPadding: {
     paddingTop: 10,
     paddingBottom: 10,
+  },
+  LoadinScreen: {
+    paddingTop: 70,
+    paddingBottom: 70,
   },
 });

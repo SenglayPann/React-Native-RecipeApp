@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { CategoryResponse, MealResponse } from '../types/meal';
-import { setCategoryResponse, setIsFetchCategoryError, setIsFetchMealError, setMealResponse } from '../redux/slices/homeSlice';
+import { setCategoryResponse, setIsFetchCategoryError, setIsFetchMealError, setMealResponse, setIsFetchingMeals } from '../redux/slices/homeSlice';
 import { AppDispatch } from '../redux/stores/store';
 import { MutableRefObject} from 'react';
 
@@ -43,13 +43,13 @@ export const fetchCategories = async (dispatch: AppDispatch) => {
 export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, controllerRef: MutableRefObject<AbortController | null>) => {
   if (controllerRef?.current) {
     controllerRef?.current.abort();
-    // console.log('aborted')
   }
 
   const controller = new AbortController();
   controllerRef.current = controller;
 
   try {
+    dispatch(setIsFetchingMeals());
     const mealRes = await getMeals(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory}`, controller.signal,
     );

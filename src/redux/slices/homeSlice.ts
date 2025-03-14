@@ -40,6 +40,9 @@ export const homeSlice = createSlice({
       state.errMessages.meal = action.payload;
       state.isLoadingMeals = false;
     },
+    setIsFetchingMeals: (state) => {
+      state.isLoadingMeals = true;
+    },
   },
 });
 
@@ -48,6 +51,7 @@ export const {
   setMealResponse,
   setIsFetchCategoryError,
   setIsFetchMealError,
+  setIsFetchingMeals,
 } = homeSlice.actions;
 
 
