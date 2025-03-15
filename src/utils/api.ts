@@ -18,6 +18,7 @@ export const getMeals = async (url: string, controllerSignal: AbortSignal): Prom
 export const getCategories = async (url: string): Promise<CategoryResponse> => {
   try {
     const response = await axios.get<CategoryResponse>(url);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching categories:', error);
@@ -41,7 +42,8 @@ export const fetchCategories = async (dispatch: AppDispatch) => {
 };
 
 export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, controllerRef: MutableRefObject<AbortController | null>) => {
-  if (controllerRef?.current) {
+  if (controllerRef?.current !== null) {
+    console.log(controllerRef.current);
     controllerRef?.current.abort();
   }
 
@@ -49,7 +51,7 @@ export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, co
   controllerRef.current = controller;
 
   try {
-    dispatch(setIsFetchingMeals());
+    // dispatch(setIsFetchingMeals());
     const mealRes = await getMeals(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory}`, controller.signal,
     );
@@ -62,3 +64,15 @@ export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, co
     // console.log(e);
   }
 };
+
+export const fetchMeal = async (mealId: string | number): Promise<MealResponse> => {
+  try {
+    const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+    // console.log(res.data);
+    return res.data;
+  } catch(e) {
+    console.log('----',e);
+    throw new Error('Failed fetching meal');
+  }
+};
+
