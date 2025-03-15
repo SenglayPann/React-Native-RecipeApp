@@ -24,16 +24,13 @@ function CategoryList({categories}: CategoryListProps): React.ReactNode {
     fetchMeals(dispatch, currentCategoryName, controllerRef);
   }, []);
 
-  useEffect(() => {
-    debounceHandler();
-  }, [currentCategoryName]);
-
   const renderItem: ListRenderItem<Category> = ({item}) => {
     return (
       <CategoryCard
         category={item}
         currentCategoryName={currentCategoryName}
         setCurrentCategoryName={setCurrentCategoryName}
+        debounceHandler={debounceHandler}
       />
     );
   };

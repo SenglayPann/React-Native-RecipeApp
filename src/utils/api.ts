@@ -43,7 +43,7 @@ export const fetchCategories = async (dispatch: AppDispatch) => {
 
 export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, controllerRef: MutableRefObject<AbortController | null>) => {
   if (controllerRef?.current !== null) {
-    console.log(controllerRef.current);
+    // console.log(controllerRef.current);
     controllerRef?.current.abort();
   }
 

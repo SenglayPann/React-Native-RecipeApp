@@ -7,14 +7,17 @@ type Props = {
   category: Category;
   currentCategoryName: string;
   setCurrentCategoryName: Function;
+  debounceHandler: Function;
 };
 
 const CategoryCard: React.FC<Props> = ({
   category,
   currentCategoryName,
   setCurrentCategoryName,
+  debounceHandler,
 }): React.ReactNode => {
   const handleChangeCategoryName = () => {
+    debounceHandler();
     setCurrentCategoryName(category.strCategory);
   };
 
