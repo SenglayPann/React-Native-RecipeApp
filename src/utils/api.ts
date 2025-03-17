@@ -51,7 +51,7 @@ export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, co
   controllerRef.current = controller;
 
   try {
-    // dispatch(setIsFetchingMeals());
+    dispatch(setIsFetchingMeals());
     const mealRes = await getMeals(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory}`, controller.signal,
     );

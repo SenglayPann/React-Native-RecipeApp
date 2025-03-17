@@ -8,12 +8,13 @@ import {MealItem} from '../types/meal';
 import FixedPosButton from '../components/FixedPosButton';
 import {fetchMeal} from '../utils/api';
 import LoadingScreen from '../components/LoadingScreen';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, useWindowDimensions} from 'react-native';
 import Message from '../components/Message';
 
 type Props = NativeStackScreenProps<RootTabParamList, 'RecipeDetails'>;
 
 const RecipeDetails = ({route}: Props) => {
+  const {height} = useWindowDimensions();
   const [thumbUri, setThumbUri] = useState<string[]>([]);
   const [meal, setMeal] = useState<MealItem | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -21,6 +22,7 @@ const RecipeDetails = ({route}: Props) => {
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
+    setIsLoading(true);
     const startFetchMeal = async () => {
       const idMeal = route.params.meal.idMeal;
       try {
@@ -38,6 +40,13 @@ const RecipeDetails = ({route}: Props) => {
 
     startFetchMeal();
   }, [route.params]);
+
+  const styles = StyleSheet.create({
+    alternateScreen: {
+      alignSelf: 'center',
+      height: height,
+    },
+  });
 
   useEffect(() => {
     setThumbUri(Array(3).fill(meal?.strMealThumb));
@@ -62,12 +71,5 @@ const RecipeDetails = ({route}: Props) => {
     </Box>
   );
 };
-
-const styles = StyleSheet.create({
-  alternateScreen: {
-    alignSelf: 'center',
-    height: 200,
-  },
-});
 
 export default RecipeDetails;
