@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux';
 import {AppDispatch} from '../redux/stores/store';
 import {fetchMeals} from '../utils/api';
 import {debounce} from '../utils/deboune';
+import {finalCategoryNameRef} from '../constant';
 
 function CategoryList({categories}: CategoryListProps): React.ReactNode {
   const [currentCategoryName, setCurrentCategoryName] = useState<string>(
@@ -16,7 +17,7 @@ function CategoryList({categories}: CategoryListProps): React.ReactNode {
   const controllerRef = useRef<AbortController | null>(null);
 
   const handleFetchMeals = () => {
-    fetchMeals(dispatch, currentCategoryName, controllerRef);
+    fetchMeals(dispatch, finalCategoryNameRef.current || '', controllerRef);
   };
 
   const debounceHandler = debounce(handleFetchMeals, 400);

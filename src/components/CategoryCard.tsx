@@ -2,6 +2,7 @@ import {Card, Image, Text} from '@gluestack-ui/themed';
 import React from 'react';
 import {Category} from '../types/meal';
 import {TouchableOpacity} from 'react-native';
+import {finalCategoryNameRef} from '../constant';
 
 type Props = {
   category: Category;
@@ -17,8 +18,11 @@ const CategoryCard: React.FC<Props> = ({
   debounceHandler,
 }): React.ReactNode => {
   const handleChangeCategoryName = () => {
-    debounceHandler();
-    setCurrentCategoryName(category.strCategory);
+    if (currentCategoryName !== category.strCategory) {
+      finalCategoryNameRef.current = category.strCategory;
+      debounceHandler();
+      setCurrentCategoryName(category.strCategory);
+    }
   };
 
   return (

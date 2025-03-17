@@ -13,14 +13,18 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {TouchableOpacity} from 'react-native';
 
+type Props = {
+  hasFilter?: boolean;
+};
+
 const safeM = '$5';
 
-function SearchBar() {
+const SearchBar = ({hasFilter = true}: Props) => {
   const size = useToken('fontSizes', 'lg');
 
   return (
     <HStack
-      m={safeM}
+      my={safeM}
       borderRadius={'$full'}
       backgroundColor={'white'}
       borderColor={'white'}>
@@ -38,16 +42,23 @@ function SearchBar() {
         </InputSlot>
         <InputField placeholder="Search any recipe" />
       </Input>
-      <HStack alignItems={'center'}>
-        <Divider orientation={'vertical'} mr={'$3'} h={'$2/3'} width={'$0.5'} />
-        <Pressable pr={safeM} onPress={() => console.log('test')}>
-          <TouchableOpacity>
-            <Icon name="filter" size={size} color={'#7d7d7d'} />
-          </TouchableOpacity>
-        </Pressable>
-      </HStack>
+      {hasFilter && (
+        <HStack alignItems={'center'}>
+          <Divider
+            orientation={'vertical'}
+            mr={'$3'}
+            h={'$2/3'}
+            width={'$0.5'}
+          />
+          <Pressable pr={safeM} onPress={() => console.log('test')}>
+            <TouchableOpacity>
+              <Icon name="filter" size={size} color={'#7d7d7d'} />
+            </TouchableOpacity>
+          </Pressable>
+        </HStack>
+      )}
     </HStack>
   );
-}
+};
 
 export default SearchBar;

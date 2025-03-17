@@ -52,6 +52,7 @@ export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, co
 
   try {
     dispatch(setIsFetchingMeals());
+    // console.log(mealCategory);
     const mealRes = await getMeals(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${mealCategory}`, controller.signal,
     );
@@ -61,7 +62,7 @@ export const fetchMeals = async (dispatch: AppDispatch, mealCategory: string, co
     }
   } catch (e) {
     dispatch(setIsFetchMealError('Failed fetching Meal'));
-    // console.log(e);
+    console.log(e);
   }
 };
 
@@ -71,7 +72,7 @@ export const fetchMeal = async (mealId: string | number): Promise<MealResponse> 
     // console.log(res.data);
     return res.data;
   } catch(e) {
-    console.log('----',e);
+    // console.log('----',e);
     throw new Error('Failed fetching meal');
   }
 };
