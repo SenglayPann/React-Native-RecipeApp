@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ArrayIngredients, ArrayOfGrouObjectLike} from '../utils/objectUtil';
+import {ArrayIngredients, ArrayOfGroubObjectLike} from '../utils/objectUtil';
 import {MealItem} from '../types/meal';
 import {Box} from '@gluestack-ui/themed';
 import IngredientCard from './IngredientCard';
@@ -14,14 +14,14 @@ const IngredientList = ({meal}: Props) => {
 
   useEffect(() => {
     if (meal) {
-      setIngredientList(ArrayOfGrouObjectLike('strIngredient', meal));
+      setIngredientList(ArrayOfGroubObjectLike('strIngredient', meal));
     }
   }, [meal]);
   return (
     <Box gap={'$2'}>
-      {ingredientList.length ? (
+      {!!ingredientList.length ? (
         ingredientList.map((ingredient, index) => {
-          return <IngredientCard key={index} ingredientName={ingredient} />;
+          return <IngredientCard key={index} ingredient={ingredient} />;
         })
       ) : (
         <Message message="There is no ingredient" />

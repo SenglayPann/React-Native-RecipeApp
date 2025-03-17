@@ -1,28 +1,33 @@
 import React from 'react';
 import {Box, HStack, Image, Text} from '@gluestack-ui/themed';
+import {Ingredient} from '../utils/objectUtil';
 
 type Props = {
-  ingredientName: string | undefined;
+  ingredient: Ingredient;
 };
 
-const IngredientCard = ({ingredientName}: Props) => {
+const IngredientCard = ({ingredient}: Props) => {
   return (
     <Box>
       <HStack>
         <HStack flex={1} alignItems="center">
           <Image
-            source={require('../assets/sugar.jpg')}
+            source={
+              'https://www.themealdb.com/images/ingredients/' +
+              ingredient.ingredientName +
+              '-small.png'
+            }
             width={50}
             height={50}
             borderRadius={6}
-            alt={'sugar'}
+            alt={ingredient.ingredientName}
           />
           <Text ml={'$2'} fontSize={'$xs'} color="$coolGray800">
-            {ingredientName}
+            {ingredient.ingredientName}
           </Text>
         </HStack>
         <Text ml={'$2'} fontSize={'$xs'} color="$coolGray800">
-          160g
+          {ingredient.measurement}
         </Text>
       </HStack>
     </Box>
