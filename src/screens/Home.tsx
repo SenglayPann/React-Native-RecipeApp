@@ -13,6 +13,8 @@ import Message from '../components/Message';
 
 import type {RootState, AppDispatch} from '../redux/stores/store';
 import {useSelector, useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
+import {TabNavigationProps} from '../types/navigation';
 
 LogBox.ignoreLogs([
   'Warning: Invalid prop `fill` supplied to `React.Fragment`',
@@ -21,17 +23,26 @@ LogBox.ignoreLogs([
 function Home(): React.ReactNode {
   const homeStates = useSelector((state: RootState) => state.home);
   const dispatch = useDispatch<AppDispatch>();
+  const navigation = useNavigation<TabNavigationProps>();
+
+  const handleNavigateAllCategories = () => {
+    navigation.navigate('Category', {
+      categories: homeStates.categoryResponse?.categories || [],
+    });
+  };
 
   useEffect(() => {
     fetchCategories(dispatch);
   }, []);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} width={'$full'}>
+    <ScrollView showsVerticalScrollIndicator={false} width={'$full'} pt={40}>
       {/* header */}
       <Header />
       {/* SearchBar */}
-      <SearchBar />
+      <Box px={'$5'}>
+        <SearchBar />
+      </Box>
       {/* Categoried */}
       {homeStates.isLoadingCategories ? (
         <Box height={'$full'} justifyContent="center">
@@ -39,7 +50,9 @@ function Home(): React.ReactNode {
         </Box>
       ) : (
         <Fragment>
-          <Listcontainer listName={'Categories'}>
+          <Listcontainer
+            listName={'Categories'}
+            handleNavigate={handleNavigateAllCategories}>
             {homeStates.categoryResponse &&
               (homeStates.categoryResponse.categories.length ? (
                 <CategoryList
