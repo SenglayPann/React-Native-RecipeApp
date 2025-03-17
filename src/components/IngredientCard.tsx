@@ -9,7 +9,7 @@ type Props = {
 const IngredientCard = ({ingredient}: Props) => {
   return (
     <Box>
-      <HStack>
+      <HStack alignItems="center">
         <HStack flex={1} alignItems="center">
           <Image
             source={
@@ -20,6 +20,7 @@ const IngredientCard = ({ingredient}: Props) => {
             width={50}
             height={50}
             borderRadius={6}
+            bgColor="$coolGray200"
             alt={ingredient.ingredientName}
           />
           <Text ml={'$2'} fontSize={'$xs'} color="$coolGray800">
