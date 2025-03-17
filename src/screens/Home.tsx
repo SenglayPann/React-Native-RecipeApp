@@ -1,4 +1,4 @@
-import React, {useEffect, Fragment} from 'react';
+import React, {useEffect} from 'react';
 import {Box, ScrollView} from '@gluestack-ui/themed';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
@@ -20,6 +20,9 @@ LogBox.ignoreLogs([
   'Warning: Invalid prop `fill` supplied to `React.Fragment`',
   'Error fetching meals: CanceledError: canceled',
 ]);
+
+const safeM = '$5';
+
 function Home(): React.ReactNode {
   const homeStates = useSelector((state: RootState) => state.home);
   const dispatch = useDispatch<AppDispatch>();
@@ -37,19 +40,17 @@ function Home(): React.ReactNode {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} width={'$full'} pt={40}>
-      {/* header */}
-      <Header />
-      {/* SearchBar */}
-      <Box px={'$5'}>
+      <Box px={safeM}>
+        <Header />
         <SearchBar />
       </Box>
-      {/* Categoried */}
+
       {homeStates.isLoadingCategories ? (
         <Box height={'$full'} justifyContent="center">
           <LoadingScreen />
         </Box>
       ) : (
-        <Fragment>
+        <Box pl={safeM}>
           <Listcontainer
             listName={'Categories'}
             handleNavigate={handleNavigateAllCategories}>
@@ -80,7 +81,7 @@ function Home(): React.ReactNode {
               <Message message={homeStates.errMessages.meal} />
             )}
           </Listcontainer>
-        </Fragment>
+        </Box>
       )}
     </ScrollView>
   );

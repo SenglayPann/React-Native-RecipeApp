@@ -10,13 +10,11 @@ type ListContainerProps = {
 
 const safeM = '$5';
 
-function Listcontainer({
-  children,
-  listName,
-  handleNavigate,
-}: ListContainerProps) {
+function Listcontainer(props: any) {
+  const {children, listName, handleNavigate}: ListContainerProps = props;
+
   return (
-    <Box w={'$full'} p={safeM} pr={'$0'} py={0}>
+    <Box w={'$full'} pr={'$0'} py={0} {...props}>
       <HStack mb={'$4'} justifyContent={'space-between'}>
         <Text color={'black'} fontWeight={'$bold'} fontSize={'$lg'}>
           {listName}

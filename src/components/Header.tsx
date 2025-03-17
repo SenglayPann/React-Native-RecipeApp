@@ -14,7 +14,7 @@ const safeM = '$6';
 
 function Header() {
   return (
-    <Box mx={safeM} mt={safeM}>
+    <Box mt={safeM}>
       <HStack>
         <Box flex={1}>
           <Text size="sm" color="#7d7d7d">

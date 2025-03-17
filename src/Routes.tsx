@@ -62,6 +62,7 @@ const Routes = () => {
           tabBarIcon: tabBarIcons.allCategory,
           headerShown: false,
           tabBarLabel: 'Categories',
+          tabBarItemStyle: {display: 'none'},
         }}
       />
     </Tab.Navigator>
