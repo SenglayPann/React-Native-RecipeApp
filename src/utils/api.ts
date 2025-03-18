@@ -77,3 +77,13 @@ export const fetchMeal = async (mealId: string | number): Promise<MealResponse> 
   }
 };
 
+export const fetchCategoryMeal = async (categoryName: string): Promise<MealResponse> => {
+  try {
+    const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`);
+    // console.log(res.data);
+    return res.data;
+  } catch (e) {
+    // console.log(e);
+    throw new Error('Failed fetching meals');
+  }
+};

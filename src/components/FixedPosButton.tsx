@@ -8,9 +8,11 @@ type Props = {
   iconName: string;
   left?: number;
   right?: number;
+  top?: number;
+  bottom?: number;
 };
 
-const FixedPosButton = ({iconName, left, right}: Props) => {
+const FixedPosButton = ({iconName, left, right, top, bottom}: Props) => {
   const navigation = useNavigation<TabNavigationProps>();
   const color = useToken('colors', 'blueGray600');
   const size = useToken('fontSizes', 'lg');
@@ -24,7 +26,8 @@ const FixedPosButton = ({iconName, left, right}: Props) => {
       position="absolute"
       left={left}
       right={right}
-      top={50}
+      top={top ?? 50}
+      bottom={bottom ?? 0}
       borderRadius={'$full'}
       backgroundColor="white"
       p={'$3'}
@@ -32,7 +35,8 @@ const FixedPosButton = ({iconName, left, right}: Props) => {
       width={'$12'}
       height={'$12'}
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+      zIndex={100}>
       <Icon name={iconName} color={color} size={size} />
     </Pressable>
   );

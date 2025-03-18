@@ -1,4 +1,5 @@
-import { MealItem } from "../types/meal";
+import { ImageRequireSource, ImageURISource } from "react-native";
+import { Category, MealItem } from "../types/meal";
 
 export type Ingredient = {
   ingredientName: string,
@@ -9,7 +10,7 @@ export type Ingredients = {
   [key: string]: Ingredient
 };
 
-export type ArrayIngredients = (Ingredient)[];
+export type ArrayIngredients = (Ingredient)[]; 
 
 export const groupObjectLike = (keyword: string, object: MealItem): Ingredients => {
   const grouped: Ingredients = Object.entries(object).reduce((acc, [key, value]) => {
@@ -29,3 +30,8 @@ export const ArrayOfGroubObjectLike = (keyword: string, object: MealItem): Array
   return Object.values(groupObjectLike(keyword, object)).filter(Boolean);
 };
 
+export const imageSourceConvert = (arrayObject: MealItem[]): ImageURISource[] => {
+  return arrayObject.map(image => {
+    return {uri: image.strMealThumb};
+  });
+};
