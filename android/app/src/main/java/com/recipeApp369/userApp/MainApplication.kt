@@ -1,4 +1,4 @@
-package com.recipeapp
+package com.recipeApp369.userApp
 
 import android.app.Application
 import com.facebook.react.PackageList
