@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {RootTabParamList} from '../types/navigation';
+import {RootTabParamList, TabNavigationProps} from '../types/navigation';
 import {ScrollView, Box} from '@gluestack-ui/themed';
 import MealGallery from '../components/MealGallery';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
